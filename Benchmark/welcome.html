@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/reset.css">
+    <link rel="stylesheet" href="./CSS/global.css">
 </head>
 <body>
     <div class="container">
@@ -19,7 +20,24 @@
             <div class="timer"></div>
         </div>
         <div class="dynamic-container">
+            <div class="welcome-container">
+                <h3>Welcome to <b>your exam</b></h3>
 
+                <h4>Instructions</h4>
+                <p>We don't expect most engineers to know the answers to all of these questions, so don't worry if you're unsure of a few of them.</p>
+
+                <ul>
+                    <li>Each question is <b>timed</b> and can only be <b>answered once</b>.</li>
+                    <li>Changing browser tab or opening other windows will<b> invalidate the question</b>.</li>
+                    <li>This exam will take approx. <b>0-5 minutes</b>.</li>
+                </ul>
+
+                <div class="welcome-footer">
+                    <input type="checkbox" id="welcome-agree">
+                    <label for="welcome-agree">I promise to answer myself without help from anyone</label>
+                    <button id="proceed">PROCEED</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
