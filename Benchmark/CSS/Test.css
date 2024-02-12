@@ -33,7 +33,9 @@
 
     text-align: center;
     padding-top: 100px;
+    padding-bottom: 60px;
     font-size: 45px;
+
 }
 
 .risposta-uno{
@@ -42,6 +44,7 @@
     padding-top: 30px;
     padding-right: 30px;
     padding-bottom: 30px;
+
 }
 
 .risposta-due{
@@ -50,17 +53,40 @@
     padding-top: 30px;
     padding-left: 30px;
     padding-bottom: 30px;
-}
 
+}
+.risposte-sotto{
+    display: block;
+    
+}
 .risposta-tre{
     display: inline-block;
     padding-top: 30px;
     padding-right: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
 }
 
 .risposta-quattro{
     display: inline-block;
     padding-top: 30px;
-    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 40px;
+}
+
+.numero-pagina{
+
+   padding-top: 100px;
+padding-bottom: 170px;
+
+}
+
+.bottone{
+    background-color: #2b2853;
+    opacity: 0.4;
+    border-radius: 40px;
+    width: 300px;
+    height: 70px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
 }
