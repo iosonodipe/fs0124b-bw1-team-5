@@ -1,3 +1,9 @@
+:root {
+    –-main-azure: #00ffff;
+    –-main-pink-first: #d20094;
+    –-main-pink-second: #900080;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -40,9 +46,37 @@ header {
     width: 250px;
 }
 
+
+/*main*/
+
 .main-title {
     text-align: center;
     margin: auto;
 }
 
-/*main*/
+.results-cake {
+    border: solid 50px #00ffff;
+    border-radius: 50%;
+}
+
+.results-text {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0;
+    font-size: 16px;
+}
+
+.btn {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 30px;
+    border: solid 5px white;
+    width: fit-content;
+    padding: 25px 50px;
+    margin: auto;
+}
