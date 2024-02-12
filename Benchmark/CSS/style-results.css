@@ -24,6 +24,7 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 60px;
+    margin: 10px 0;
 }
 
 .text-font {
@@ -54,9 +55,48 @@ header {
     margin: auto;
 }
 
+.flex-content {
+    display: flex;
+    margin: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-auto {
+    flex: auto;
+    text-align: center;
+}
+
+.correct-answers {
+    text-align: left;
+    padding-left: 100px;
+}
+
+.wrong-answers {
+    text-align: right;
+    padding-right: 100px;
+}
+
 .results-cake {
     border: solid 50px #00ffff;
     border-radius: 50%;
+    display: flex;
+    width: 30px;
+    padding: 60px;
+    aspect-ratio: 1 / 1;
+    letter-spacing: 1px;
+}
+
+.congrats {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 18px;
+}
+
+.color-azure {
+    color: #00ffff;
 }
 
 .results-text {
@@ -69,14 +109,30 @@ header {
     font-size: 16px;
 }
 
+.certificate-notice {
+    display: inline-block;
+    margin: 10px 0;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0;
+      font-size: 14px;
+}
+
 .btn {
     font-family: "Outfit", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 700;
+    font-weight: 400;
     font-style: normal;
     font-size: 30px;
     border: solid 5px white;
     width: fit-content;
-    padding: 25px 50px;
+    padding: 25px 75px;
     margin: auto;
+}
+
+.bold {
+    font-weight: 700;
 }
