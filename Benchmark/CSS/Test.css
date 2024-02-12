@@ -1,10 +1,66 @@
 .container{
     background-image: url(../assets/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: inherit;
+    color: white;
+}
+.header{
+ display: flex;
+
+
+
+}
+.logo{
+    padding-top: 50px;
+    padding-left: 90px;
+   padding-bottom: 20px;
+   
+}
+.timer{
+    width: 70%;
+    display: inline-block;
+    text-align: right;
+    padding-top: 40px;
+
+}
+.dynamic-container{
+    text-align: center;
 }
 
+.h2-domanda{
 
+    text-align: center;
+    padding-top: 100px;
+    font-size: 45px;
+}
 
-.logo p{
+.risposta-uno{
 
-    display: inline;
+    display: inline-block;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+}
+
+.risposta-due{
+  
+   display: inline-block;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+
+.risposta-tre{
+    display: inline-block;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+}
+
+.risposta-quattro{
+    display: inline-block;
+    padding-top: 30px;
+    padding-right: 30px;
 }
