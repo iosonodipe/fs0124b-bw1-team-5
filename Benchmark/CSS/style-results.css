@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+/*general*/
+
+/*body*/
+
+body {
+    background-image: url(../assets/bg.jpg);
+    background-size: cover;
+    color: white;
+}
+
+.title-font {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 60px;
+}
+
+.text-font {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0;
+    font-size: 16px;
+}
+
+/*header*/
+
+header {
+    padding: 50px 100px;
+}
+
+.logo {
+    width: 250px;
+}
+
+.main-title {
+    text-align: center;
+    margin: auto;
+}
+
+/*main*/
