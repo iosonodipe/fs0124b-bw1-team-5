@@ -77,18 +77,45 @@ header {
 }
 
 .results-cake {
-    border: solid 50px #00ffff;
-    border-radius: 50%;
-    box-shadow: 0 0 15px black;
+    --w:150px;
     display: flex;
-    width: 30px;
-    padding: 30px;
+    width:var(--w);
+    aspect-ratio:1;
+    position:relative;
+    padding: 50px;
     aspect-ratio: 1 / 1;
     letter-spacing: 1px;
     align-items: center;
     justify-content: center;
     line-height: 18px;
 }
+
+.results-cake:before {
+    --p:100;
+    --b:40px;
+    --c:#00ffff;
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    inset: 0;
+    background: conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+    -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+            mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+
+.results-cake:after {
+    --p:34;
+    --b:40px;
+    --c:#ff00bf;
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    inset:0;
+    background: conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+    -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+            mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+
 
 .congrats {
     font-size: 16px;
