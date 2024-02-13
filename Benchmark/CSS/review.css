@@ -1,0 +1,67 @@
+.areacenter{
+    margin-top: 50px;
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+}
+.areacenter h1{
+margin: 10px;
+}
+
+p{
+    padding-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.areacenter div{
+    padding-bottom: 30px;
+}
+.stars {
+    display: flex;
+}
+
+.logo-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.logo-button svg {
+    width: 35px;
+    height: 40px;
+    
+}
+
+.logo-button svg path {
+    fill: #220f3b; 
+   
+}
+
+.logo-button.selected svg path, .logo-button:hover svg path {
+            fill: #00FFFF; 
+        }
+
+#buttoninfo
+{
+    padding: 15px 40px;
+    background-color: var(--blue);
+    box-shadow: 0px 0px 23px 2px rgba(0,255,255,0.58);
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 40px;
+}
+#buttoninfo:hover{
+    background-color: var(--red);
+    color: #fff;
+}
+
+.comment{
+    border-bottom-color: var(--red);
+    border-top: 0 ;
+    border-left: 0;
+    border-right: 0;
+    background-color: transparent;
+    width: 500px;
+}
