@@ -31,40 +31,59 @@ margin-bottom: 60px;
 }
 
 .risposta-uno{
-
-    display: inline-block;
+cursor: pointer;
+outline: none;
+display: inline-block;
 margin-top: 30px;
 margin-right: 15px;
 margin-bottom: 15px;
+border-radius: 50px;
 
 }
-
+.risposta-uno:hover{
+    background: linear-gradient(90deg, #d20094, #900080);
+    
+}
 .risposta-due{
-  
-   display: inline-block;
+cursor: pointer;
+outline: none;
+display: inline-block;
 margin-top: 30px;
 margin-left: 15px;
 margin-bottom: 15px;
-
+border-radius: 50px;
+}
+.risposta-due:hover{
+    background: linear-gradient(90deg, #d20094, #900080);
 }
 .risposte-sotto{
     display: block;
     
 }
 .risposta-tre{
-    display: inline-block;
+cursor: pointer;
+outline: none;
+display: inline-block;
 margin-top: 5px;
 margin-right: 15px;
 margin-bottom: 15px;
+border-radius: 50px;
 }
-
+.risposta-tre:hover{
+    background: linear-gradient(90deg, #d20094, #900080);
+}
 .risposta-quattro{
-    display: inline-block;
+cursor: pointer;
+outline: none;
+display: inline-block;
 margin-top: 5px;
 margin-left: 15px;
 margin-bottom: 15px;
+border-radius: 50px;
 }
-
+.risposta-quattro:hover{
+    background: linear-gradient(90deg, #d20094, #900080);
+}
 .numero-pagina{
    margin-top: 50px;
    margin-bottom: 50px;
