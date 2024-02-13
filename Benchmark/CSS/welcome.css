@@ -16,11 +16,13 @@
     font-weight: 900;
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #C2128D;
+    color: var(--red);
+    
 }
 
 .welcome-container p{
     margin-bottom: 40px;
+    margin-top: 0;
 }
 
 .welcome-container ul{
@@ -43,4 +45,54 @@
     font-family: 'Outfit', sans-serif;
     font-size: 1.2rem;
     font-weight: bold;
+}
+
+#proceed:hover{
+    background-color: var(--red);
+    color: #fff;
+}
+
+#proceed:active{
+    background-color: #c60cb0c8; 
+}
+
+.welcome-footer{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.welcome-footer label {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.welcome-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 22px;
+    margin-top: 20px;
+    font-size: 22px;
+    user-select: none;
+}
+
+.welcome-checkbox input:checked ~ .checkmark {
+    background-color: var(--red);
+}
+
+
+.welcome-checkbox input{
+    height: 0;
+    width: 0;
+
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10px;
+    width: 10px;
+    border: 2px solid #c9c9c9;
+    
 }
