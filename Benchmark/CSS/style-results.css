@@ -59,6 +59,7 @@ header {
 .main-title {
     text-align: center;
     margin: auto;
+    margin-bottom: 100px;
 }
 
 .subtitle {
@@ -69,7 +70,7 @@ header {
     display: flex;
     margin: 50px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .flex-auto {
@@ -79,14 +80,14 @@ header {
 
 .correct-answers {
     text-align: left;
-    padding-left: 100px;
     margin-bottom: 30px;
+    max-width: fit-content;
 }
 
 .wrong-answers {
     text-align: right;
-    padding-right: 100px;
     margin-bottom: 30px;
+    max-width: fit-content;
 }
 
 .line-height {
@@ -97,10 +98,12 @@ header {
     --w:200px;
     display: flex;
     width:var(--w);
+    max-width: 400px;
+    min-width: 400px;
     aspect-ratio:1;
     position:relative;
-    padding: 50px;
-    margin-bottom: 30px;
+    padding: 70px;
+    margin-bottom: 15px;
     aspect-ratio: 1 / 1;
     letter-spacing: 1px;
     align-items: center;
@@ -135,7 +138,6 @@ header {
     -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
             mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
 }
-
 
 .congrats {
     font-size: 16px;
@@ -177,6 +179,7 @@ header {
     width: fit-content;
     padding: 25px 75px;
     margin: auto;
+    margin-top: 30px;
 }
 
 .bold {
