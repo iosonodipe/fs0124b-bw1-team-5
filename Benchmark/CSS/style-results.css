@@ -1,8 +1,18 @@
+:root{
+    --blue: #00FFFF;
+    --red: #D20094;
+}
+
 * {
     box-sizing: border-box;
 }
 
 /*general*/
+
+html, body{
+    height: 100%;
+    margin: 0;
+}
 
 /*body*/
 
@@ -35,11 +45,12 @@ body {
 /*header*/
 
 header {
-    padding: 30px 100px;
+    margin: 30px 0;
+    padding: 0 100px;
 }
 
 .logo {
-    width: 200px;
+    width: 150px;
 }
 
 
@@ -69,30 +80,35 @@ header {
 .correct-answers {
     text-align: left;
     padding-left: 100px;
+    margin-bottom: 30px;
 }
 
 .wrong-answers {
     text-align: right;
     padding-right: 100px;
+    margin-bottom: 30px;
 }
 
 .results-cake {
-    --w:150px;
+    --w:200px;
     display: flex;
     width:var(--w);
     aspect-ratio:1;
     position:relative;
     padding: 50px;
+    margin-bottom: 30px;
     aspect-ratio: 1 / 1;
     letter-spacing: 1px;
     align-items: center;
     justify-content: center;
     line-height: 18px;
-}
+    border-radius: 50%;
+    box-shadow: 10px 10px 25px rgb(0 0 0 / 50%);
+}   
 
 .results-cake:before {
     --p:100;
-    --b:40px;
+    --b:50px;
     --c:#00ffff;
     content: "";
     position: absolute;
@@ -105,7 +121,7 @@ header {
 
 .results-cake:after {
     --p:34;
-    --b:40px;
+    --b:50px;
     --c:#ff00bf;
     content: "";
     position: absolute;
