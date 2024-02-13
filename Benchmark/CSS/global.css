@@ -1,0 +1,38 @@
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+:root{
+    --blue: #00FFFF;
+    --red: #D20094;
+}
+
+p{
+    line-height: 1.3rem;
+}
+
+.container{
+    box-sizing: border-box;
+    background-image: url(../assets/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px 80px;
+    height: inherit;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+.container h3, .container h4{
+    font-family: 'Outfit', sans-serif;
+}
+
+.header{
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.logo img{
+    width: 150px
+}
+
