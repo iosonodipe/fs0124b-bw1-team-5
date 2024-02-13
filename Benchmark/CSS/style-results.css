@@ -89,6 +89,10 @@ header {
     margin-bottom: 30px;
 }
 
+.line-height {
+    line-height: 60px;
+}
+
 .results-cake {
     --w:200px;
     display: flex;
