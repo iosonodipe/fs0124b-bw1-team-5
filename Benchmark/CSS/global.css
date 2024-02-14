@@ -12,15 +12,15 @@ p{
     line-height: 1.3rem;
 }
 
-.container{
+.container-main{
     box-sizing: border-box;
-    background-image: url(../assets/bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
     padding: 30px 80px;
     height: inherit;
     color: white;
     font-family: 'Inter', sans-serif;
+    background-image: url(../assets/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container h3, .container h4{
@@ -34,5 +34,9 @@ p{
 
 .logo img{
     width: 150px
+}
+
+iframe{
+    display: none;
 }
 
