@@ -8,8 +8,8 @@ body {
   
   .base-timer {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
   }
   
   .base-timer__svg {
@@ -28,7 +28,7 @@ body {
   
   .base-timer__path-remaining {
     stroke-width: 7px;
-    stroke-linecap: round;
+    stroke-linecap: butt;
     transform: rotate(90deg);
     transform-origin: center;
     transition: 1s linear all;
@@ -45,19 +45,34 @@ body {
   }
   
   .base-timer__path-remaining.red {
-    color: #610545;
+    color: #900080;
   }
   
   .base-timer__label {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
     top: 0;
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 50px;
   }
 
- 
+
+  .seconds-label, .remaining-label {
+    position: absolute;
+    font-size: 0.8rem;
+    color: #333;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.seconds-label {
+top: 30px; 
+}
+
+.remaining-label {
+bottom: 30px; 
+}
