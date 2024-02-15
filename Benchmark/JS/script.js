@@ -11,7 +11,7 @@ let punteggio = 6;
 //----------------------------------SELETTORI GLOBALI----------------------------------
 let iframe = document.querySelector("iframe");
 
-//----------------------------------FUNZIONI----------------------------------
+//----------------------------------FUNZIONI GLOBALI----------------------------------
 
 //funzione che aspetta riempimento di iframe per poi andare a ricavare il contenuto di esso e appenderlo al container dell'index
 iframe.onload = function () {
@@ -43,12 +43,15 @@ function cambioPagina() {
 // console.log(bottoneProceed);
 // bottoneProceed.addEventListener('click', cambioPagina)
 
-//RESULT PAGE
+//----------------------------------FUNZIONI DI PAGINA----------------------------------
+
+//result page
 function calcoloPercentualeCorrette() {
   let percentualeGiuste = document.querySelector("#percentualeCorrette");
   percentualeGiuste.innerText = (punteggio / 10) * 100 + "%";
   let risposteGiuste = document.querySelector("#risposteCorrette");
   risposteGiuste.innerText = punteggio + "/10 questions";
+  let esitoEsame = document.querySelector()
 }
 
 function calcoloPercentualeErrate() {
