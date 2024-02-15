@@ -22,26 +22,36 @@ function riempimentoDynamicContainer() {
   let clone = document.importNode(oldNode, true);
   dynamicContainer.append(clone);
   //aggiunere if per stabilire scatenamento funzioni in base alla iframe.src
-  calcoloPercentualeCorrette(clone);
-  calcoloPercentualeErrate(clone);
-  eventoBottoneRateUs(clone);
+  switch (iframe.src) {
+    case "http://127.0.0.1:5500/Benchmark/welcome.html":
+      break;
+    case "http://127.0.0.1:5500/Benchmark/test.html":
+      break;
+    case "http://127.0.0.1:5500/Benchmark/results.html":
+      calcoloPercentualeCorrette(clone);
+      calcoloPercentualeErrate(clone);
+      eventoBottoneRateUs(clone);
+  }
 }
 
 //funzione cambio pagina (riempimento iframe con html)
 function cambioPagina() {
-  console.log(iframe.src);
   switch (iframe.src) {
     case "http://127.0.0.1:5500/Benchmark/welcome.html":
+      iframe.contentWindow.location.reload()
       iframe.src = "http://127.0.0.1:5500/Benchmark/test.html";
       break;
     case "http://127.0.0.1:5500/Benchmark/test.html":
+      iframe.contentWindow.location.reload()
       iframe.src = "http://127.0.0.1:5500/Benchmark/results.html";
       break;
     case "http://127.0.0.1:5500/Benchmark/results.html":
+      iframe.contentWindow.location.reload()
       iframe.src = "http://127.0.0.1:5500/Benchmark/welcome.html";
       //modificare src con review
   }
-  iframe.location.href.reload()
+  // iframe.contentWindow.location.reload()
+  // iframe.location.href.reload()
   dynamicContainer.innerHTML = ''
   iframe.onload = riempimentoDynamicContainer
 }
