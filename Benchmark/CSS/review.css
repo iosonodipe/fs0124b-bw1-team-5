@@ -38,7 +38,7 @@ p{
 }
 
 .logo-button.selected svg path, .logo-button:hover svg path {
-            fill: #00FFFF; 
+        fill: #00FFFF; 
         }
 
 #buttoninfo
