@@ -1,34 +1,27 @@
-fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
-  .then((response) => response.json())
-  .then((dati) => {
-    let domande = dati.results;
+// fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
+//   .then((response) => response.json())
+//   .then((dati) => {
+//     let domande = dati.results;
 
-    let punteggio = 5;
+//   });
 
-    // function calcoloPercentualeCorrette() {
-    //   let percentualeGiuste = document.querySelector('#percentualeCorrette')
-    //   console.log(percentualeGiuste);
-    //   percentualeGiuste.innerText((punteggio/10)*100)
-    //   console.log(percentualeGiuste.innerText);
-    // }
+//----------------------------------VARIABILI GLOBALI----------------------------------
+let punteggio = 6;
 
-    // calcoloPercentualeCorrette()
-  });
-
-//variabili globali
-
-//SELETTORI GLOBALI
+//----------------------------------SELETTORI GLOBALI----------------------------------
 let iframe = document.querySelector("iframe");
 
+//----------------------------------FUNZIONI----------------------------------
+
+//funzione che aspetta riempimento di iframe per poi andare a ricavare il contenuto di esso e appenderlo al container dell'index
 iframe.onload = function () {
   const oldNode = iframe.contentWindow.document.getElementById("content");
   let dynamicContainer = document.querySelector(".dynamic-container");
   let clone = document.importNode(oldNode, true);
   dynamicContainer.append(clone);
+  calcoloPercentualeCorrette();
+  calcoloPercentualeErrate();
 };
-
-
-//FUNZIONI
 
 //funzione cambio pagina (riempimento iframe con html)
 function cambioPagina() {
@@ -49,3 +42,18 @@ function cambioPagina() {
 // let bottoneProceed = document.querySelector("#proceed");
 // console.log(bottoneProceed);
 // bottoneProceed.addEventListener('click', cambioPagina)
+
+//RESULT PAGE
+function calcoloPercentualeCorrette() {
+  let percentualeGiuste = document.querySelector("#percentualeCorrette");
+  percentualeGiuste.innerText = (punteggio / 10) * 100 + "%";
+  let risposteGiuste = document.querySelector("#risposteCorrette");
+  risposteGiuste.innerText = punteggio + "/10 questions";
+}
+
+function calcoloPercentualeErrate() {
+  let percentualeErrate = document.querySelector("#percentualeErrate");
+  percentualeErrate.innerText = ((10 - punteggio) / 10) * 100 + "%";
+  let risposteErrate = document.querySelector("#risposteErrate");
+  risposteErrate.innerText = 10 - punteggio + "/10 questions";
+}
