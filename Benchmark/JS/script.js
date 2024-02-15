@@ -59,6 +59,8 @@ function calcoloPercentualeCorrette(clone) {
     esitoDescrizione.innerText = "You didn't pass the exam.";
     esitoTesto.innerText = "You can try the test again in an hour."
   }
+  let root = document.querySelector(':root');
+  root.style.setProperty('--punteggio', (10-punteggio)*10)
 }
 
 function calcoloPercentualeErrate(clone) {
