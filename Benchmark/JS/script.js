@@ -19,8 +19,8 @@ iframe.onload = function () {
   let dynamicContainer = document.querySelector(".dynamic-container");
   let clone = document.importNode(oldNode, true);
   dynamicContainer.append(clone);
-  calcoloPercentualeCorrette();
-  calcoloPercentualeErrate();
+  calcoloPercentualeCorrette(clone);
+  calcoloPercentualeErrate(clone);
 };
 
 //funzione cambio pagina (riempimento iframe con html)
@@ -46,17 +46,24 @@ function cambioPagina() {
 //----------------------------------FUNZIONI DI PAGINA----------------------------------
 
 //result page
-function calcoloPercentualeCorrette() {
-  let percentualeGiuste = document.querySelector("#percentualeCorrette");
+function calcoloPercentualeCorrette(clone) {
+  let percentualeGiuste = clone.querySelector("#percentualeCorrette");
   percentualeGiuste.innerText = (punteggio / 10) * 100 + "%";
-  let risposteGiuste = document.querySelector("#risposteCorrette");
+  let risposteGiuste = clone.querySelector("#risposteCorrette");
   risposteGiuste.innerText = punteggio + "/10 questions";
-  let esitoEsame = document.querySelector()
+  let esitoEsame = clone.querySelector("#esitoEsame");
+  let esitoDescrizione = clone.querySelector("#esitoDescrizione");
+  let esitoTesto = clone.querySelector('#esitoTesto')
+  if (punteggio < 6) {
+    esitoEsame.innerText = "I'm sorry";
+    esitoDescrizione.innerText = "You didn't pass the exam.";
+    esitoTesto.innerText = "You can try the test again in an hour."
+  }
 }
 
-function calcoloPercentualeErrate() {
-  let percentualeErrate = document.querySelector("#percentualeErrate");
+function calcoloPercentualeErrate(clone) {
+  let percentualeErrate = clone.querySelector("#percentualeErrate");
   percentualeErrate.innerText = ((10 - punteggio) / 10) * 100 + "%";
-  let risposteErrate = document.querySelector("#risposteErrate");
+  let risposteErrate = clone.querySelector("#risposteErrate");
   risposteErrate.innerText = 10 - punteggio + "/10 questions";
 }
