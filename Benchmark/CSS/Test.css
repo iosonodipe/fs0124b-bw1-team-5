@@ -84,6 +84,19 @@ border-radius: 50px;
 .risposta-quattro:hover{
     background: linear-gradient(90deg, #d20094, #900080);
 }
+
+#first {
+    display: ;
+
+
+}
+
+#second{
+    display: none;
+    
+}
+
+
 .numero-pagina{
    margin-top: 50px;
    margin-bottom: 50px;
@@ -101,3 +114,16 @@ border-radius: 50px;
 .span-finale{
     color: #d20095;
 }
+
+.bottone-avanti{
+
+    padding: 15px 40px;
+    color: white;
+    background-color: var(--red);
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+}
+

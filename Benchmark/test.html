@@ -24,11 +24,13 @@
                 <img src="./assets/timer esempio.png" width="200px">
             </div>
         </div> 
-        <div class="dynamic-container">
+        <div class="dynamic-container" id="content">
             <div class="h3-domanda">
             <h3>How can i create a checkbox in HTML ? </h3>
             </div>
             
+
+<div id="first">
             <div class="risposta-uno"> 
                 <button class="bottone" type="button">risposta 1</button>
             </div>
@@ -43,7 +45,16 @@
                 <button class="bottone" type="button"> risposta 4 </button>
             </div>
             </div>
-
+        </div>
+        <div id="second">
+            <div class="risposta-uno"> 
+                <button class="bottone" type="button">risposta 1</button>
+            </div>
+            <div class="risposta-due">
+                <button class="bottone" type="button"> risposta 2</button>
+            </div>
+       
+        </div>
 
 
             <!-- I 4 bottoni in realtà non sono bottoni ma ci servono per capire
@@ -56,6 +67,9 @@
             <div class="numero-pagina">
                 <p>Question 1 <span class="span-finale">/10</span> </p>
             </div>
+            <div>
+                <button class="bottone-avanti" type="button">Avanti</button>
+            </div>
         </div>
     </div>
 
@@ -63,15 +77,21 @@
 
 
     <script>     
-    // fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
-//   .then((response) => response.json())
-//   .then((dati) => {
-//     let domande = dati.results;
 
-//   });
-        
-        
-        
+ fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
+  .then((response) => response.json())
+  .then((dati) => {
+
+        let domande = dati.results;
+
+  });
+
+  const areadomanda = document.querySelector ('.h3-domanda')
+  const domanda = document.createElement('')
+
+
+
+
     </script>
 
 
