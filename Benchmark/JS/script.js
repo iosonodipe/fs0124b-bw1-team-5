@@ -17,6 +17,9 @@ fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
 
 //variabili globali
 
+//SELETTORI GLOBALI
+let iframe = document.querySelector("iframe");
+
 iframe.onload = function () {
   const oldNode = iframe.contentWindow.document.getElementById("content");
   let dynamicContainer = document.querySelector(".dynamic-container");
@@ -24,8 +27,6 @@ iframe.onload = function () {
   dynamicContainer.append(clone);
 };
 
-//SELETTORI GLOBALI
-let iframe = document.querySelector("iframe");
 
 //FUNZIONI
 
