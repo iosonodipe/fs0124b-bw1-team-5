@@ -64,7 +64,7 @@ body {
   .seconds-label, .remaining-label {
     position: absolute;
     font-size: 0.8rem;
-    color: #333;
+    color: white;
     left: 50%;
     transform: translateX(-50%);
 }
