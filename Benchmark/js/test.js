@@ -1,154 +1,267 @@
-// fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
-//   .then((response) => response.json())
-//   .then((dati) => {
-//     let domande = dati.results;
-
-//   });
-
 //----------------------------------VARIABILI GLOBALI----------------------------------
 let punteggio = 6;
 let domande = []; // Array per memorizzare le domande ricevute dall'API
-
-//----------------------------------SELETTORI GLOBALI----------------------------------
-//let iframe = document.querySelector("iframe");
+let tempoRimanente = 60; // Tempo rimanente per rispondere a ogni domanda
+let intervalloTimer; // Variabile per l'intervallo del timer
 
 //----------------------------------FUNZIONI GLOBALI----------------------------------
 
-//funzione che aspetta riempimento di iframe per poi andare a ricavare il contenuto di esso e appenderlo al container dell'index
-//iframe.onload = function () {
-//  const oldNode = iframe.contentWindow.document.getElementById("content");
-//  let dynamicContainer = document.querySelector(".dynamic-container");
-//  let clone = document.importNode(oldNode, true);
-//  dynamicContainer.append(clone);
-//  //calcoloPercentualeCorrette();
-//  //calcoloPercentualeErrate();
-//};
-
-
-        // Funzione per caricare le domande dall'API
-        function caricamentoDomande() {
-          fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
-              .then((response) => response.json())
-              .then((dati) => {
-                  domande = dati.results; // Salva le domande nell'array globale
-                  iniziaQuiz(); // Avvia il quiz quando le domande sono state caricate
-              })
-              .catch((error) => {
-                  console.log("Si è verificato un errore nel caricamento delle domande:", error);
-              });
-      }
-
-
-
-
-//funzione cambio pagina (riempimento iframe con html)
-function cambioPagina() {
-  switch (iframe.src) {
-    case "./welcome.html":
-      iframe.src = "./test.html";
-      break;
-    case "./test.html":
-      iframe.src = "./results.html";
-      break;
-    case "./results.html":
-      iframe.src = "./review.html";
-      break;
-  }
+// Funzione per caricare le domande dall'API
+function caricamentoDomande() {
+    fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
+        .then((response) => response.json())
+        .then((dati) => {
+            domande = dati.results; // Salva le domande nell'array globale
+            iniziaQuiz(); // Avvia il quiz quando le domande sono state caricate
+        })
+        .catch((error) => {
+            console.log("Si è verificato un errore nel caricamento delle domande:", error);
+        });
 }
 
-// let bottoneProceed = iframe.contentDocument.querySelector("#proceed");
-// let bottoneProceed = document.querySelector("#proceed");
-// console.log(bottoneProceed);
-// bottoneProceed.addEventListener('click', cambioPagina)
+// Funzione per avviare il quiz
+function iniziaQuiz() {
+    // Avvia il timer per la prima domanda
+    avviaTimer();
+    // Mostra la prima domanda
+    mostraDomanda();
+}
 
-//----------------------------------FUNZIONI DI PAGINA----------------------------------
-
-       // Funzione per avviare il quiz
-       function iniziaQuiz() {
-        // Mostra la prima domanda
-        mostraDomanda();
+// Funzione per mostrare una domanda
+function mostraDomanda() {
+    // Controlla se ci sono ancora domande rimanenti
+    if (domande.length === 0) {
+        // Se non ci sono più domande, mostra il risultato finale
+        mostraRisultato();
+        return;
     }
 
-    // Funzione per mostrare una domanda
-    function mostraDomanda() {
-        // Controlla se ci sono ancora domande rimanenti
-        if (domande.length === 0) {
-            // Se non ci sono più domande, mostra il risultato finale
-            mostraRisultato();
-            return;
-        }
+    // Prendi la prima domanda dall'array
+    let domandaCorrente = domande.pop();
 
-        // Prendi la prima domanda dall'array
-        let domandaCorrente = domande.pop();
+    // Aggiorna il contenuto della domanda nel documento HTML
+    document.getElementById('domanda').innerText = domandaCorrente.question;
 
-        // Aggiorna il contenuto della domanda nel documento HTML
-        document.getElementById('domanda').innerText = domandaCorrente.question;
+    // Rimuovi le risposte precedenti
+    document.getElementById('risposte-container').innerHTML = '';
 
-        // Rimuovi le risposte precedenti
-        document.getElementById('risposte-container').innerHTML = '';
-
-        // Crea e aggiungi i pulsanti di risposta
-        if (domandaCorrente.type === "multiple") {
-            // Domanda con più risposte
-            for (let risposta of domandaCorrente.incorrect_answers) {
-                let button = createButton(risposta);
-                document.getElementById('risposte-container').appendChild(button);
-            }
-            // Aggiungi la risposta corretta come ultimo bottone
-            let button = createButton(domandaCorrente.correct_answer);
+    // Crea e aggiungi i pulsanti di risposta
+    if (domandaCorrente.type === "multiple") {
+        // Domanda con più risposte
+        for (let risposta of domandaCorrente.incorrect_answers) {
+            let button = createButton(risposta);
             document.getElementById('risposte-container').appendChild(button);
-        } else if (domandaCorrente.type === "boolean") {
-            // Domanda True/False
-            let trueButton = createButton('True');
-            let falseButton = createButton('False');
-            document.getElementById('risposte-container').appendChild(trueButton);
-            document.getElementById('risposte-container').appendChild(falseButton);
         }
+        // Aggiungi la risposta corretta come ultimo bottone
+        let button = createButton(domandaCorrente.correct_answer);
+        document.getElementById('risposte-container').appendChild(button);
+    } else if (domandaCorrente.type === "boolean") {
+        // Domanda True/False
+        let trueButton = createButton('True');
+        let falseButton = createButton('False');
+        document.getElementById('risposte-container').appendChild(trueButton);
+        document.getElementById('risposte-container').appendChild(falseButton);
     }
+}
 
-    // Funzione per creare un bottone con uno stile simile ai bottoni nel markup HTML
-    function createButton(text) {
-        let button = document.createElement('button');
-        button.className = 'bottone';
-        button.type = 'button';
-        button.innerText = text;
-        return button;
+// Funzione per creare un bottone con uno stile simile ai bottoni nel markup HTML
+function createButton(text) {
+    let button = document.createElement('button');
+    button.className = 'bottone';
+    button.type = 'button';
+    button.innerText = text;
+    return button;
+}
+
+// Funzione chiamata quando l'utente seleziona una risposta
+function selezionaRisposta(event) {
+    let rispostaSelezionata = event.target.innerText;
+    if (rispostaSelezionata === domande[domande.length - 1].correct_answer) {
+        punteggio++; // Incrementa il punteggio se la risposta è corretta
     }
+    mostraDomanda(); // Passa alla prossima domanda
+}
 
-    // Funzione chiamata quando l'utente seleziona una risposta
-    function selezionaRisposta(event) {
-        let rispostaSelezionata = event.target.innerText;
-        if (rispostaSelezionata === domande[domande.length - 1].correct_answer) {
-            punteggio++; // Incrementa il punteggio se la risposta è corretta
+// Funzione per mostrare il risultato finale
+function mostraRisultato() {
+    // Nascondi il contenitore del quiz
+    document.getElementById("quiz-container").style.display = "none";
+
+    // Crea un elemento per mostrare il risultato
+    let resultElement = document.createElement('div');
+    resultElement.id = 'result';
+    resultElement.innerText = "Hai risposto correttamente a " + punteggio + " domande su 10.";
+
+    // Aggiungi il risultato al documento
+    document.body.appendChild(resultElement);
+}
+
+// Funzione per avviare il timer per la domanda corrente
+function avviaTimer() {
+    tempoRimanente = 60; // Imposta il tempo iniziale a 60 secondi per ogni domanda
+    aggiornaTimer(); // Aggiorna il timer all'inizio
+    intervalloTimer = setInterval(function() {
+        tempoRimanente--;
+        aggiornaTimer(); // Aggiorna il timer ogni secondo
+        if (tempoRimanente === 0) {
+            clearInterval(intervalloTimer); // Interrompi il timer quando il tempo è scaduto
+            selezionaRisposta(); // Carica la prossima domanda quando il timer finisce
+            avviaTimer(); // Avvia il timer per la nuova domanda
         }
-        mostraDomanda(); // Passa alla prossima domanda
+    }, 1000); // Ogni secondo
+
+  if (timerInterval){
+    clearInterval(timerInterval)
+timerInterval = null;
+   }
+}
+
+// Funzione per aggiornare il timer nell'HTML
+function aggiornaTimer() {
+    document.getElementById("base-timer-label").innerText = tempoRimanente;
+}
+
+// Aggiungi un gestore per il clic sui pulsanti di risposta
+document.getElementById('risposte-container').addEventListener('click', function(event) {
+    selezionaRisposta(event);
+    clearInterval(intervalloTimer); // Interrompi il timer quando l'utente risponde a una domanda
+    avviaTimer(); // Avvia il timer per la prossima domanda
+});
+
+// Avvia il caricamento delle domande quando la pagina si carica
+window.onload = function() {
+    caricamentoDomande();
+};
+
+//----------------------------------TIMER PER PAGINA----------------------------------
+
+const FULL_DASH_ARRAY = 283;
+const WARNING_THRESHOLD = 10;
+const ALERT_THRESHOLD = 5;
+
+const COLOR_CODES = {
+    info: {
+        color: "green"
+    },
+    warning: {
+        color: "orange",
+        threshold: WARNING_THRESHOLD
+    },
+    alert: {
+        color: "red",
+        threshold: ALERT_THRESHOLD
+    }
+};
+
+const TIME_LIMIT = 60; // Impostato a 60 secondi
+let timePassed = 0;
+let timeLeft = TIME_LIMIT;
+let timerInterval = null;
+let remainingPathColor = COLOR_CODES.info.color;
+
+document.getElementById("timer").innerHTML = `
+<div class="base-timer">
+  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g class="base-timer__circle">
+      <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+      <path
+        id="base-timer-path-remaining"
+        stroke-dasharray="283"
+        class="base-timer__path-remaining ${remainingPathColor}"
+        d="
+          M 50, 50
+          m -45, 0
+          a 45,45 0 1,0 90,0
+          a 45,45 0 1,0 -90,0
+        "
+      ></path>
+    </g>
+  </svg>
+  <span id="base-timer-label" class="base-timer__label">${formatTime(
+    timeLeft
+  )}</span>
+</div>
+`;
+
+// Create and append labels
+const timerContainer = document.querySelector('.base-timer');
+const secondsLabel = document.createElement('div');
+secondsLabel.textContent = 'Seconds';
+secondsLabel.classList.add('seconds-label');
+
+const remainingLabel = document.createElement('div');
+remainingLabel.textContent = 'Remaining';
+remainingLabel.classList.add('remaining-label');
+
+timerContainer.appendChild(secondsLabel);
+timerContainer.appendChild(remainingLabel);
+
+startTimer();
+
+function onTimesUp() {
+    clearInterval(timerInterval);
+}
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        timePassed = timePassed += 1;
+        timeLeft = TIME_LIMIT - timePassed;
+        document.getElementById("base-timer-label").innerHTML = formatTime(
+            timeLeft
+        );
+        setCircleDasharray();
+        setRemainingPathColor(timeLeft);
+
+        if (timeLeft === 0) {
+            onTimesUp();
+        }
+    }, 1000);
+}
+
+function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    if (seconds < 10) {
+        seconds = `0${seconds}`;
     }
 
-    // Aggiungi un gestore per il clic sui pulsanti di risposta
-    document.getElementById('risposte-container').addEventListener('click', selezionaRisposta);
+    return `${seconds}`;
+}
 
-    // Funzione per mostrare il risultato finale
-    function mostraRisultato() {
-        // Nascondi il contenitore del quiz
-        document.getElementById("quiz-container").style.display = "none";
-
-        // Crea un elemento per mostrare il risultato
-        let resultElement = document.createElement('div');
-        resultElement.id = 'result';
-        resultElement.innerText = "Hai risposto correttamente a " + punteggio + " domande su 10.";
-
-        // Aggiungi il risultato al documento
-        document.body.appendChild(resultElement);
+function setRemainingPathColor(timeLeft) {
+    const {
+        alert,
+        warning,
+        info
+    } = COLOR_CODES;
+    if (timeLeft <= alert.threshold) {
+        document
+            .getElementById("base-timer-path-remaining")
+            .classList.remove(warning.color);
+        document
+            .getElementById("base-timer-path-remaining")
+            .classList.add(alert.color);
+    } else if (timeLeft <= warning.threshold) {
+        document
+            .getElementById("base-timer-path-remaining")
+            .classList.remove(info.color);
+        document
+            .getElementById("base-timer-path-remaining")
+            .classList.add(warning.color);
     }
+}
 
-    // Avvia il caricamento delle domande quando la pagina si carica
-    window.onload = function () {
-        caricamentoDomande();
-    };
+function calculateTimeFraction() {
+    const rawTimeFraction = timeLeft / TIME_LIMIT;
+    return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+}
 
-
-
-
-
-//result page
-
+function setCircleDasharray() {
+    const circleDasharray = `${(
+        calculateTimeFraction() * FULL_DASH_ARRAY
+    ).toFixed(0)} 283`;
+    document
+        .getElementById("base-timer-path-remaining")
+        .setAttribute("stroke-dasharray", circleDasharray);
+}
