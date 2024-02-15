@@ -18,38 +18,40 @@
         <img src="./assets/epicode_logo.png" alt="" class="logo">
     </header>
 
-    <main class="main-results">
+    <div class="dynamic-container" id="content">
+        <main class="main-results">
 
-        <div class="main-title">
-            <h3 class="title-font bold">Results</h3>
-            <p class="text-font subtitle">The summary of your answers:</p>
-        </div>
-
-        <div class="flex-content">
-            <div class="flex-auto correct-answers">
-                <p class="title-font line-height">Correct</p>
-                <p class="title-font bold line-height" id="percentualeCorrette">66.7%</p>
-                <p class="text-font">4/6 questions</p>
+            <div class="main-title">
+                <h3 class="title-font bold">Results</h3>
+                <p class="text-font subtitle">The summary of your answers:</p>
             </div>
-            <div class="results-cake flex-auto inter-font">
-                <p>
-                    <span class="congrats bold">Congratulations! <br> <span class="color-azure">You passed the exam.</span></span>
-                    <span class="certificate-notice">We'll send you the certificate in few minutes. <br> Check your email (including promotion / spam folder)</span>
-                </p>
+
+            <div class="flex-content">
+                <div class="flex-auto correct-answers">
+                    <p class="title-font line-height">Correct</p>
+                    <p class="title-font bold line-height" id="percentualeCorrette">66.7%</p>
+                    <p class="text-font">4/6 questions</p>
+                </div>
+                <div class="results-cake flex-auto inter-font">
+                    <p>
+                        <span class="congrats bold">Congratulations! <br> <span class="color-azure">You passed the exam.</span></span>
+                        <span class="certificate-notice">We'll send you the certificate in few minutes. <br> Check your email (including promotion / spam folder)</span>
+                    </p>
+                </div>
+                <div class="flex-auto wrong-answers">
+                    <p class="title-font line-height">Wrong</p>
+                    <p class="title-font line-height bold">33.3%</p>
+                    <p class="text-font">2/6 questions</p>
+                </div>
             </div>
-            <div class="flex-auto wrong-answers">
-                <p class="title-font line-height">Wrong</p>
-                <p class="title-font line-height bold">33.3%</p>
-                <p class="text-font">2/6 questions</p>
+
+            <div class="btn bold">
+                RATE US
             </div>
-        </div>
 
-        <div class="btn bold">
-            RATE US
-        </div>
-
-    </main>
-
+        </main>
+    </div>
+    
 <script src="./JS/script.js"></script>
 
 </body>
