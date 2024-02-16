@@ -23,13 +23,14 @@ p{
     background-size: cover;
 }
 
-.container h3, .container h4{
+.container-main h3, .container-main h4{
     font-family: 'Outfit', sans-serif;
 }
 
 .header{
     margin-bottom: 30px;
     display: flex;
+    /* justify-content: space-between; */
 }
 
 .logo img{
