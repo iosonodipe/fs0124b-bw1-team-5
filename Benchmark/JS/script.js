@@ -106,8 +106,8 @@ function eventoBottoneRateUs(clone) {
 
 //review page
 
-function selezionaStelle(clone) {
-  const stars = clone.querySelectorAll(".logo-button");
+function selezionaStelle() {
+  const stars = document.querySelectorAll(".logo-button");
   let rating = 0;
 
   stars.forEach((star, index) => {
