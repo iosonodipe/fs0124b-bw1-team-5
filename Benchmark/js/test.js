@@ -22,7 +22,7 @@ function caricamentoDomande() {
 // Funzione per avviare il quiz
 function iniziaQuiz() {
     // Avvia il timer per la prima domanda
-    avviaTimer();
+    startTimer();
     // Mostra la prima domanda
     mostraDomanda();
 }
@@ -39,6 +39,10 @@ function mostraDomanda() {
     // Prendi la prima domanda dall'array
     let domandaCorrente = domande.pop();
 
+    // Mescola le risposte, includendo la risposta corretta
+    let risposteMescolate = domandaCorrente.incorrect_answers.concat(domandaCorrente.correct_answer);
+    risposteMescolate = mescolaArray(risposteMescolate);
+
     // Aggiorna il contenuto della domanda nel documento HTML
     document.getElementById('domanda').innerText = domandaCorrente.question;
 
@@ -46,22 +50,19 @@ function mostraDomanda() {
     document.getElementById('risposte-container').innerHTML = '';
 
     // Crea e aggiungi i pulsanti di risposta
-    if (domandaCorrente.type === "multiple") {
-        // Domanda con più risposte
-        for (let risposta of domandaCorrente.incorrect_answers) {
-            let button = createButton(risposta);
-            document.getElementById('risposte-container').appendChild(button);
-        }
-        // Aggiungi la risposta corretta come ultimo bottone
-        let button = createButton(domandaCorrente.correct_answer);
+    risposteMescolate.forEach(risposta => {
+        let button = createButton(risposta);
         document.getElementById('risposte-container').appendChild(button);
-    } else if (domandaCorrente.type === "boolean") {
-        // Domanda True/False
-        let trueButton = createButton('True');
-        let falseButton = createButton('False');
-        document.getElementById('risposte-container').appendChild(trueButton);
-        document.getElementById('risposte-container').appendChild(falseButton);
+    });
+}
+
+// Funzione per mescolare un array
+function mescolaArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
+    return array;
 }
 
 // Funzione per creare un bottone con uno stile simile ai bottoni nel markup HTML
@@ -79,7 +80,9 @@ function selezionaRisposta(event) {
     if (rispostaSelezionata === domande[domande.length - 1].correct_answer) {
         punteggio++; // Incrementa il punteggio se la risposta è corretta
     }
+    clearInterval(intervalloTimer); // Interrompi il timer quando l'utente risponde a una domanda
     mostraDomanda(); // Passa alla prossima domanda
+    startTimer(); // Avvia il timer per la nuova domanda
 }
 
 // Funzione per mostrare il risultato finale
@@ -96,7 +99,7 @@ function mostraRisultato() {
     document.body.appendChild(resultElement);
 }
 
-// Funzione per avviare il timer per la domanda corrente
+/* Funzione per avviare il timer per la domanda corrente
 function avviaTimer() {
     tempoRimanente = 60; // Imposta il tempo iniziale a 60 secondi per ogni domanda
     aggiornaTimer(); // Aggiorna il timer all'inizio
@@ -104,17 +107,11 @@ function avviaTimer() {
         tempoRimanente--;
         aggiornaTimer(); // Aggiorna il timer ogni secondo
         if (tempoRimanente === 0) {
-            clearInterval(intervalloTimer); // Interrompi il timer quando il tempo è scaduto
             selezionaRisposta(); // Carica la prossima domanda quando il timer finisce
-            avviaTimer(); // Avvia il timer per la nuova domanda
+          
         }
     }, 1000); // Ogni secondo
-
-  if (timerInterval){
-    clearInterval(timerInterval)
-timerInterval = null;
-   }
-}
+}*/
 
 // Funzione per aggiornare il timer nell'HTML
 function aggiornaTimer() {
@@ -123,9 +120,8 @@ function aggiornaTimer() {
 
 // Aggiungi un gestore per il clic sui pulsanti di risposta
 document.getElementById('risposte-container').addEventListener('click', function(event) {
+
     selezionaRisposta(event);
-    clearInterval(intervalloTimer); // Interrompi il timer quando l'utente risponde a una domanda
-    avviaTimer(); // Avvia il timer per la prossima domanda
 });
 
 // Avvia il caricamento delle domande quando la pagina si carica
@@ -196,7 +192,7 @@ remainingLabel.classList.add('remaining-label');
 timerContainer.appendChild(secondsLabel);
 timerContainer.appendChild(remainingLabel);
 
-startTimer();
+//startTimer();
 
 function onTimesUp() {
     clearInterval(timerInterval);
@@ -213,7 +209,9 @@ function startTimer() {
         setRemainingPathColor(timeLeft);
 
         if (timeLeft === 0) {
-            onTimesUp();
+           
+            selezionaRisposta(); // Carica la prossima domanda quando il timer finisce
+            
         }
     }, 1000);
 }

@@ -25,60 +25,31 @@ margin-bottom: 60px;
 
 }
 
-.risposta-uno{
-cursor: pointer;
-outline: none;
-display: inline-block;
-margin-top: 30px;
-margin-right: 15px;
-margin-bottom: 15px;
-border-radius: 50px;
+#risposte-container{
+ 
+ display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+#risposte-container button {
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  margin: 10px;
+  width: 500px;
+  border-top :3px solid;
+  border-left: 2px solid;
+  border-right: 2px solid;
+  border-bottom: transparent;
 }
-.risposta-uno:hover{
-    background: linear-gradient(90deg, #d20094, #900080);
-    
+
+#risposte-container button:hover {
+  background: linear-gradient(90deg, #d20094, #900080);
+  border-bottom: transparent ;
 }
-.risposta-due{
-cursor: pointer;
-outline: none;
-display: inline-block;
-margin-top: 30px;
-margin-left: 15px;
-margin-bottom: 15px;
-border-radius: 50px;
-}
-.risposta-due:hover{
-    background: linear-gradient(90deg, #d20094, #900080);
-}
-.risposte-sotto{
-    display: block;
-    
-}
-.risposta-tre{
-cursor: pointer;
-outline: none;
-display: inline-block;
-margin-top: 5px;
-margin-right: 15px;
-margin-bottom: 15px;
-border-radius: 50px;
-}
-.risposta-tre:hover{
-    background: linear-gradient(90deg, #d20094, #900080);
-}
-.risposta-quattro{
-cursor: pointer;
-outline: none;
-display: inline-block;
-margin-top: 5px;
-margin-left: 15px;
-margin-bottom: 15px;
-border-radius: 50px;
-}
-.risposta-quattro:hover{
-    background: linear-gradient(90deg, #d20094, #900080);
-}
+
+
 
 
 .numero-pagina{
