@@ -143,6 +143,14 @@ header {
     font-size: 16px;
 }
 
+#esitoEsame, #esitoDescrizione{
+    font-size: 1.2rem;
+}
+
+#esitoTesto{
+    margin-top: 25px;
+}
+
 .color-azure {
     color: #00ffff;
 }
@@ -174,8 +182,8 @@ header {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 30px;
-    border: solid 5px white;
+    font-size: 25px;
+    border: solid 3px white;
     width: fit-content;
     padding: 25px 75px;
     margin: auto;
