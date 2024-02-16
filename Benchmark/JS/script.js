@@ -6,8 +6,8 @@ fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
 
 //----------------------------------VARIABILI GLOBALI----------------------------------
 let punteggio = 6;
-let difficoltà //value input welcome
-let numeroDomande //value input welcome
+let difficoltà; //value input welcome
+let numeroDomande; //value input welcome
 
 //----------------------------------SELETTORI GLOBALI----------------------------------
 let iframe = document.querySelector("iframe");
@@ -34,6 +34,9 @@ function riempimentoDynamicContainer() {
       calcoloPercentualeCorrette(clone);
       calcoloPercentualeErrate(clone);
       eventoBottoneRateUs(clone);
+      break;
+    case "http://127.0.0.1:5500/Benchmark/review.html":
+      selezionaStelle();
   }
 }
 
@@ -95,4 +98,45 @@ function calcoloPercentualeErrate(clone) {
 function eventoBottoneRateUs(clone) {
   let bottoneRateUs = clone.querySelector(".btn");
   bottoneRateUs.addEventListener("mouseup", cambioPagina);
+}
+
+//review page
+
+function selezionaStelle() {
+  const stars = document.querySelectorAll(".logo-button");
+  let rating = 0;
+
+  stars.forEach((star, index) => {
+    star.addEventListener("click", () => {
+      if (index === rating - 1) {
+        rating = 0;
+      } else {
+        rating = index + 1;
+      }
+      updateStars();
+      console.log("Valutazione:", rating);
+    });
+
+    star.addEventListener("mouseenter", () => {
+      for (let i = 0; i <= index; i++) {
+        stars[i].classList.add("selected");
+      }
+    });
+
+    star.addEventListener("mouseleave", () => {
+      if (rating === 0) {
+        stars.forEach((star) => star.classList.remove("selected"));
+      }
+    });
+  });
+}
+
+function updateStars() {
+  stars.forEach((star, index) => {
+    if (index < rating) {
+      star.classList.add("selected");
+    } else {
+      star.classList.remove("selected");
+    }
+  });
 }
