@@ -1,22 +1,29 @@
 .areacenter{
     margin-top: 50px;
     text-align: center;
-    font-family: 'Outfit', sans-serif;
 }
-.areacenter h1{
-    margin: 10px;
+.areacenter h3{
+    font-family: 'Outfit', sans-serif;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    font-size: 3rem;
+    font-weight: bold;
 }
 
 p{
+    font-family: 'Inter', sans-serif;
     padding-bottom: 10px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
 }
 
 .areacenter div{
     padding-bottom: 30px;
 }
-.stars {
-    display: flex;
+
+#stars {
+    margin-top: 15px;
+    margin-bottom: 35px;
 }
 
 .logo-button {
@@ -62,8 +69,14 @@ p{
     border-left: 0;
     border-right: 0;
     background-color: transparent;
-    width: 500px;
+    margin-top: 20px;
+    width: 700px;
     height: 40px;
     color: white;
+}
+
+.comment::placeholder{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
 }
 
