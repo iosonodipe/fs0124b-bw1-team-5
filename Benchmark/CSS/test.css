@@ -1,0 +1,78 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+ 
+ 
+ }
+ 
+ 
+ .dynamic-container{
+     text-align: center;
+     /* margin-bottom: 20px;
+  */
+ }
+ .h3-domanda{
+ 
+     text-align: center;
+ margin-top: 100px;
+ margin-bottom: 60px;
+     font-size: 45px;
+ 
+ }
+ 
+ #risposte-container{
+  
+  display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+ }
+ 
+ #risposte-container button {
+   cursor: pointer;
+   outline: none;
+   text-align: center;
+   margin: 10px;
+   width: 500px;
+   border-top :3px solid;
+   border-left: 2px solid;
+   border-right: 2px solid;
+   border-bottom: transparent;
+ }
+ 
+ #risposte-container button:hover {
+   background: linear-gradient(90deg, #d20094, #900080);
+   border-bottom: transparent ;
+ }
+ 
+ 
+ 
+ 
+ .numero-pagina{
+     text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+ }
+ 
+ .bottone{
+     background-color: rgba(36, 40, 76, 0.3);
+     border-radius: 40px;
+     width: 300px;
+     height: 70px;
+     color: white;
+     font-weight: bold;
+     font-size: 18px;
+ }
+ .span-finale{
+     color: #d20095;
+ }
+ 
+ .bottone-avanti{
+     padding: 15px 40px;
+     color: white;
+     background-color: var(--red);
+     border: none;
+     font-family: 'Outfit', sans-serif;
+     font-size: 1.2rem;
+     font-weight: bold;
+ 
+ }
