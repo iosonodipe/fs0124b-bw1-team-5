@@ -1,13 +1,8 @@
-fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
-  .then((response) => response.json())
-  .then((dati) => {
-    let domande = dati.results;
-  });
-
 //----------------------------------VARIABILI GLOBALI----------------------------------
 let punteggio = 6;
 let difficoltà; //value input welcome
 let numeroDomande; //value input welcome
+let domande;
 
 //----------------------------------SELETTORI GLOBALI----------------------------------
 let iframe = document.querySelector("iframe");
@@ -15,8 +10,16 @@ let dynamicContainer = document.querySelector(".dynamic-container");
 
 //----------------------------------FUNZIONI GLOBALI----------------------------------
 
-//funzione che aspetta riempimento di iframe per poi andare a ricavare il contenuto di esso e appenderlo al container dell'index
+//funzione che scatena il fetch
+function avviaFetch() {
+  fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
+    .then((response) => response.json())
+    .then((dati) => {
+      domande = dati.results;
+    });
+}
 
+//funzione che aspetta riempimento di iframe per poi andare a ricavare il contenuto di esso e appenderlo al container dell'index
 iframe.onload = riempimentoDynamicContainer;
 
 function riempimentoDynamicContainer() {
@@ -29,6 +32,7 @@ function riempimentoDynamicContainer() {
       eventoBottoneProceed(clone);
       break;
     case "http://127.0.0.1:5500/Benchmark/test.html":
+      avviaFetch();
       break;
     case "http://127.0.0.1:5500/Benchmark/results.html":
       calcoloPercentualeCorrette(clone);
@@ -102,8 +106,8 @@ function eventoBottoneRateUs(clone) {
 
 //review page
 
-function selezionaStelle() {
-  const stars = document.querySelectorAll(".logo-button");
+function selezionaStelle(clone) {
+  const stars = clone.querySelectorAll(".logo-button");
   let rating = 0;
 
   stars.forEach((star, index) => {
