@@ -1,11 +1,13 @@
-// fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
-//   .then((response) => response.json())
-//   .then((dati) => {
-//     let domande = dati.results;
-//   });
+fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy")
+  .then((response) => response.json())
+  .then((dati) => {
+    let domande = dati.results;
+  });
 
 //----------------------------------VARIABILI GLOBALI----------------------------------
 let punteggio = 6;
+let difficoltà //value input welcome
+let numeroDomande //value input welcome
 
 //----------------------------------SELETTORI GLOBALI----------------------------------
 let iframe = document.querySelector("iframe");
@@ -24,6 +26,7 @@ function riempimentoDynamicContainer() {
   //aggiunere if per stabilire scatenamento funzioni in base alla iframe.src
   switch (iframe.src) {
     case "http://127.0.0.1:5500/Benchmark/welcome.html":
+      eventoBottoneProceed(clone);
       break;
     case "http://127.0.0.1:5500/Benchmark/test.html":
       break;
@@ -38,29 +41,31 @@ function riempimentoDynamicContainer() {
 function cambioPagina() {
   switch (iframe.src) {
     case "http://127.0.0.1:5500/Benchmark/welcome.html":
-      iframe.contentWindow.location.reload()
+      iframe.contentWindow.location.reload();
       iframe.src = "http://127.0.0.1:5500/Benchmark/test.html";
       break;
     case "http://127.0.0.1:5500/Benchmark/test.html":
-      iframe.contentWindow.location.reload()
+      iframe.contentWindow.location.reload();
       iframe.src = "http://127.0.0.1:5500/Benchmark/results.html";
       break;
     case "http://127.0.0.1:5500/Benchmark/results.html":
-      iframe.contentWindow.location.reload()
-      iframe.src = "http://127.0.0.1:5500/Benchmark/welcome.html";
-      //modificare src con review
+      iframe.contentWindow.location.reload();
+      iframe.src = "http://127.0.0.1:5500/Benchmark/review.html";
+    //modificare src con review
   }
   // iframe.contentWindow.location.reload()
   // iframe.location.href.reload()
-  dynamicContainer.innerHTML = ''
-  iframe.onload = riempimentoDynamicContainer
+  dynamicContainer.innerHTML = "";
+  iframe.onload = riempimentoDynamicContainer;
 }
 
-// let bottoneProceed = iframe.contentDocument.querySelector("#proceed");
-// let bottoneProceed = document.querySelector("#proceed");
-// bottoneProceed.addEventListener('mouseup', cambioPagina)
-
 //----------------------------------FUNZIONI DI PAGINA----------------------------------
+
+//welcome page
+function eventoBottoneProceed(clone) {
+  let bottoneProceed = clone.querySelector("#proceed");
+  bottoneProceed.addEventListener("mouseup", cambioPagina);
+}
 
 //result page
 function calcoloPercentualeCorrette(clone) {
