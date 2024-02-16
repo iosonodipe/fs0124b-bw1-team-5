@@ -99,19 +99,22 @@ function mostraRisultato() {
     document.body.appendChild(resultElement);
 }
 
-/* Funzione per avviare il timer per la domanda corrente
-function avviaTimer() {
+// Funzione per avviare il timer per la domanda corrente
+function startTimer() {
+    clearInterval(timerInterval); // Resetta il timer
+
     tempoRimanente = 60; // Imposta il tempo iniziale a 60 secondi per ogni domanda
     aggiornaTimer(); // Aggiorna il timer all'inizio
     intervalloTimer = setInterval(function() {
         tempoRimanente--;
         aggiornaTimer(); // Aggiorna il timer ogni secondo
         if (tempoRimanente === 0) {
+            clearInterval(intervalloTimer); // Interrompi il timer quando il tempo è scaduto
             selezionaRisposta(); // Carica la prossima domanda quando il timer finisce
-          
+            startTimer(); // Avvia il timer per la nuova domanda
         }
     }, 1000); // Ogni secondo
-}*/
+}
 
 // Funzione per aggiornare il timer nell'HTML
 function aggiornaTimer() {
@@ -120,7 +123,6 @@ function aggiornaTimer() {
 
 // Aggiungi un gestore per il clic sui pulsanti di risposta
 document.getElementById('risposte-container').addEventListener('click', function(event) {
-
     selezionaRisposta(event);
 });
 
@@ -192,28 +194,8 @@ remainingLabel.classList.add('remaining-label');
 timerContainer.appendChild(secondsLabel);
 timerContainer.appendChild(remainingLabel);
 
-//startTimer();
-
 function onTimesUp() {
     clearInterval(timerInterval);
-}
-
-function startTimer() {
-    timerInterval = setInterval(() => {
-        timePassed = timePassed += 1;
-        timeLeft = TIME_LIMIT - timePassed;
-        document.getElementById("base-timer-label").innerHTML = formatTime(
-            timeLeft
-        );
-        setCircleDasharray();
-        setRemainingPathColor(timeLeft);
-
-        if (timeLeft === 0) {
-           
-            selezionaRisposta(); // Carica la prossima domanda quando il timer finisce
-            
-        }
-    }, 1000);
 }
 
 function formatTime(time) {
