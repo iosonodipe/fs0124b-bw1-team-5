@@ -81,13 +81,13 @@ header {
 .correct-answers {
     text-align: left;
     margin-bottom: 30px;
-    max-width: fit-content;
+    max-width: 180px;
 }
 
 .wrong-answers {
     text-align: right;
     margin-bottom: 30px;
-    max-width: fit-content;
+    max-width: 180px;
 }
 
 .line-height {
@@ -126,15 +126,15 @@ header {
             mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
 }
 
+
 .results-cake:after {
-    --p:34;
     --b:50px;
     --c:#ff00bf;
     content: "";
     position: absolute;
     border-radius: 50%;
     inset:0;
-    background: conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+    background: conic-gradient(var(--c) calc(var(--punteggio)*1%),#0000 0);
     -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
             mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
 }
@@ -180,6 +180,10 @@ header {
     padding: 25px 75px;
     margin: auto;
     margin-top: 30px;
+}
+
+.btn:hover{
+    box-shadow: 0px 0px 23px 2px rgba(0,255,255,0.58);
 }
 
 .bold {
