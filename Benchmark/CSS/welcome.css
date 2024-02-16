@@ -10,7 +10,7 @@
     font-size: 3.75rem;
     line-height: 3rem;
     margin-bottom: 40px;
-    margin-top: 40px;
+    margin-top: 80px;
     font-weight: 300;
 }
 
@@ -36,6 +36,19 @@
     list-style-type:disc;
     line-height: 1.5rem;
     margin-bottom: 40px;
+}
+
+.extra-select{
+    margin-bottom: 30px;
+}
+
+#select-difficoltà, #select-domande{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: var(--red);
+    color: white;
+    /* border: 1px solid white; */
+    padding: 5px;
 }
 
 .welcome-footer input[type="checkbox"]{
